@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://dc45rog6v126l"]
+
+[ext_resource type="Script" path="res://Scenes/main_scene.gd" id="1_lhfgc"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_lhfgc")
+
+[node name="LoginContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LoginContainer"]
+layout_mode = 2
+
+[node name="Join" type="Button" parent="LoginContainer/VBoxContainer"]
+layout_mode = 2
+text = "JOIN"
+
+[node name="Host" type="Button" parent="LoginContainer/VBoxContainer"]
+layout_mode = 2
+text = "HOST"
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://Scenes/ship.tscn")
+spawn_path = NodePath("../Players")
+
+[node name="Players" type="Node2D" parent="."]
+
+[connection signal="pressed" from="LoginContainer/VBoxContainer/Join" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="LoginContainer/VBoxContainer/Host" to="." method="_on_host_pressed"]
