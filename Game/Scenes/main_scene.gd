@@ -27,9 +27,3 @@ func _on_host_pressed() -> void:
 	MultiplayerManager.become_host()
 	hud.hide()
 	
-	
-func _on_peer_connected(id: int = 1):
-	var player_escene = load("res://Scenes/player.tscn")
-	var player_instance = player_escene.instantiate()
-	player_instance.name = str(id)
-	add_child(player_instance,true)

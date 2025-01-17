@@ -1,7 +1,7 @@
 extends Node
 
 const SERVER_PORT = 6666
-const SERVER_IP = "localhost"
+const SERVER_IP = "159.54.153.82"
 
 
 func join() -> void:
@@ -9,7 +9,7 @@ func join() -> void:
 	peer.create_client(SERVER_IP, SERVER_PORT)
 	multiplayer.multiplayer_peer = peer
 	
-var _players_spawn_node
+var _players_spawn_node: Node
 
 func become_host():
 	var peer = ENetMultiplayerPeer.new()
@@ -26,7 +26,7 @@ func become_host():
 	
 func _on_peer_connected(id: int = 1):
 	print("PLayer %s joined the game" % id)
-	var player_escene = load("res://Scenes/player.tscn")
+	var player_escene = load("res://Scenes/ship.tscn")
 	var player_instance = player_escene.instantiate()
 	player_instance.name = str(id)
 	_players_spawn_node.add_child(player_instance,true)
@@ -36,4 +36,5 @@ func _del_player(id: int):
 	if not _players_spawn_node.has_node(str(id)):
 		return
 	_players_spawn_node.get_node(str(id)).queue_free()
+	print(_players_spawn_node.get_child_count())
 	
