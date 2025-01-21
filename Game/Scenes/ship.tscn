@@ -1,7 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://bo30871pjoie3"]
+[gd_scene load_steps=7 format=3 uid="uid://bo30871pjoie3"]
 
-[ext_resource type="Script" path="res://Scripts/Ship.gd" id="1_rs7hx"]
-[ext_resource type="Texture2D" uid="uid://cyw1k3xpmw3aj" path="res://Sprites/Ships/ship (2).png" id="2_3715q"]
+[ext_resource type="Script" path="res://Scripts/Characters/Ships/ship_01.gd" id="1_qcp34"]
+[ext_resource type="Texture2D" uid="uid://m1g8t1bdfhh0" path="res://Assets/Sprites/Ships/body_01.png" id="2_ujill"]
+[ext_resource type="PackedScene" uid="uid://8mgainrx8wdt" path="res://Scenes/Weapons/weapon_controller.tscn" id="3_vs20u"]
+[ext_resource type="PackedScene" uid="uid://dsj5anf7vpvg4" path="res://Scenes/Weapons/weapon_ship_01.tscn" id="4_yx6e5"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qui63"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_0gm5t"]
 properties/0/path = NodePath("Sprite2D:rotation")
@@ -14,13 +18,33 @@ properties/2/path = NodePath(".:position")
 properties/2/spawn = true
 properties/2/replication_mode = 1
 
-[node name="Ship" type="CharacterBody2D"]
-script = ExtResource("1_rs7hx")
+[node name="Ship_01" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 11
+platform_on_leave = 2
+script = ExtResource("1_qcp34")
+health = 1500
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_3715q")
+texture = ExtResource("2_ujill")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qui63")
+}
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_0gm5t")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-16, -127, 15, -127, 45, -98, 46, -31, 37, -22, 37, 29, 52, 60, 53, 90, 37, 106, 37, 112, 22, 127, -23, 127, -38, 113, -36, 107, -53, 90, -53, 57, -37, 27, -36, -21, -46, -31, -46, -98)
+
+[node name="Weapons" parent="." instance=ExtResource("3_vs20u")]
+
+[node name="WeaponShip01" parent="Weapons" instance=ExtResource("4_yx6e5")]
+position = Vector2(-16, -48)
+
+[node name="WeaponShip02" parent="Weapons" instance=ExtResource("4_yx6e5")]
+position = Vector2(16, -48)
+
+[node name="Camera2D" type="Camera2D" parent="."]
