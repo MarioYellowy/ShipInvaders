@@ -25,8 +25,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_x1yoh")
-metadata/_edit_vertical_guides_ = [548.0]
-metadata/_edit_horizontal_guides_ = [232.0]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -65,15 +63,7 @@ offset_right = 310.0
 grow_vertical = 0
 texture = ExtResource("4_i5o2u")
 
-[node name="cannonDown" type="TextureRect" parent="CanvasLayer"]
-offset_left = 206.0
-offset_top = 470.0
-offset_right = 262.0
-offset_bottom = 510.0
-texture = ExtResource("5_4s81o")
-expand_mode = 3
-
-[node name="cannonUp" type="TextureRect" parent="CanvasLayer"]
+[node name="cannon" type="TextureRect" parent="CanvasLayer"]
 offset_left = 206.0
 offset_top = 347.0
 offset_right = 262.0
