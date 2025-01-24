@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bo30871pjoie3"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Ships/ship_01.gd" id="1_qcp34"]
-[ext_resource type="Texture2D" uid="uid://m1g8t1bdfhh0" path="res://Assets/Sprites/Ships/body_01.png" id="2_ujill"]
+[ext_resource type="Texture2D" uid="uid://c2ly275k2xod2" path="res://Assets/Sprites/Ships/body_01.png" id="2_ujill"]
 [ext_resource type="PackedScene" uid="uid://8mgainrx8wdt" path="res://Scenes/Weapons/weapon_controller.tscn" id="3_vs20u"]
 [ext_resource type="PackedScene" uid="uid://dsj5anf7vpvg4" path="res://Scenes/Weapons/weapon_ship_01.tscn" id="4_yx6e5"]
 [ext_resource type="PackedScene" uid="uid://cu7ykm4ptoak8" path="res://Scenes/Weapons/single_canon.tscn" id="5_l5tn5"]
@@ -22,9 +22,8 @@ properties/2/replication_mode = 1
 
 [node name="Ship_01" type="CharacterBody2D" groups=["Player"]]
 disable_mode = 1
-collision_layer = 2git
-collision_mask = 11
-platform_floor_layers = 4294967040
+collision_layer = 2
+platform_floor_layers = 4294967041
 platform_wall_layers = 1
 script = ExtResource("1_qcp34")
 health = 1500

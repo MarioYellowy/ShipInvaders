@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dsj5anf7vpvg4"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/Canon/Double_canon.gd" id="1_uamep"]
-[ext_resource type="Texture2D" uid="uid://jy78mfj6aia" path="res://Assets/Sprites/Weapons/turret_01_mk3_anim.png" id="2_qkt0h"]
+[ext_resource type="Texture2D" uid="uid://cvetyqpanch6q" path="res://Assets/Sprites/Weapons/turret_01_mk3_anim.png" id="2_qkt0h"]
 
 [sub_resource type="Animation" id="Animation_nvquv"]
 length = 0.001

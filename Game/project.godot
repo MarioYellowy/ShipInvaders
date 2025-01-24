@@ -18,18 +18,15 @@ config/icon="res://icon.svg"
 [autoload]
 
 MultiplayerManager="*res://Scripts/Multiplayer/multiplayer_manager.gd"
-[display]
-
-window/stretch/mode="canvas_items"
-
-[editor_plugins]
-
-enabled=PackedStringArray()
 
 [display]
 
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PackedStringArray()
 
 [input]
 
