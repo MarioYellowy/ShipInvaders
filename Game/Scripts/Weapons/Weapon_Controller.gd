@@ -20,7 +20,7 @@ func _weapon_start(weapon:WeaponBase) -> void:
 	weapon.weapon_controller = self
 	weapon.start()
 	
-#region
+#region events
 func _process(delta: float) -> void:
 	for weapon: WeaponBase in weapons:
 		if weapon and weapon.has_method("on_process"):

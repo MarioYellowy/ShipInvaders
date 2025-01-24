@@ -2,7 +2,7 @@ class_name CharacterBase extends CharacterBody2D
 
 @export_group("STATS")
 @export var health = 0
-@export var speed = 0
+@export var speed: float = 0
 
 @export_group("Behavior")
 @export var is_bot: bool = true
@@ -13,8 +13,12 @@ class_name CharacterBase extends CharacterBody2D
 		player_id = id
 
 func _enter_tree() -> void:
-	print(name)
 	set_multiplayer_authority(name.to_int())
+	if is_multiplayer_authority():
+		visible = true
+		is_bot = false
+	else:
+		visible = false
 
 func _physics_process(delta: float) -> void:
 	pass

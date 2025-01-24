@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dsj5anf7vpvg4"]
 
-[ext_resource type="Script" path="res://Scripts/Weapons/Ship/Weapon01.gd" id="1_uamep"]
+[ext_resource type="Script" path="res://Scripts/Weapons/Canon/Double_canon.gd" id="1_uamep"]
 [ext_resource type="Texture2D" uid="uid://jy78mfj6aia" path="res://Assets/Sprites/Weapons/turret_01_mk3_anim.png" id="2_qkt0h"]
 
 [sub_resource type="Animation" id="Animation_nvquv"]
@@ -33,6 +33,17 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_om5r2"]
 _data = {
@@ -44,10 +55,14 @@ _data = {
 
 [node name="Area2D" type="Area2D"]
 collision_layer = 4
-collision_mask = 0
+collision_mask = 8
 script = ExtResource("1_uamep")
+max_bullets = 2
+cooldown_reload = 2.5
+damage = 200
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
 texture = ExtResource("2_qkt0h")
 hframes = 6
 
@@ -58,5 +73,7 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_jgadr")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
