@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=3 uid="uid://cu7ykm4ptoak8"]
+
+[ext_resource type="Script" path="res://Scripts/Weapons/Canon/Single_canon.gd" id="1_6dmil"]
+[ext_resource type="Texture2D" uid="uid://gmnubgbsxgpk" path="res://Assets/Sprites/Weapons/SingleCanon.png" id="2_ugf71"]
+
+[sub_resource type="Animation" id="Animation_famc2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_boues"]
+resource_name = "shot"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rgpcn"]
+_data = {
+"RESET": SubResource("Animation_famc2"),
+"shot": SubResource("Animation_boues")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ayblm"]
+size = Vector2(20, 17.5)
+
+[node name="SingleCanon" type="Area2D"]
+collision_layer = 4
+collision_mask = 8
+script = ExtResource("1_6dmil")
+max_bullets = 1
+cooldown_reload = 2.5
+damage = 400
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("2_ugf71")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rgpcn")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0.25)
+shape = SubResource("RectangleShape2D_ayblm")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

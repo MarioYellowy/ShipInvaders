@@ -1,26 +1,66 @@
-[gd_scene load_steps=4 format=3 uid="uid://bo30871pjoie3"]
+[gd_scene load_steps=9 format=3 uid="uid://bo30871pjoie3"]
 
-[ext_resource type="Script" path="res://Scripts/Ship.gd" id="1_rs7hx"]
-[ext_resource type="Texture2D" uid="uid://cyw1k3xpmw3aj" path="res://Sprites/Ships/ship (2).png" id="2_3715q"]
+[ext_resource type="Script" path="res://Scripts/Characters/Ships/ship_01.gd" id="1_qcp34"]
+[ext_resource type="Texture2D" uid="uid://c2ly275k2xod2" path="res://Assets/Sprites/Ships/body_01.png" id="2_ujill"]
+[ext_resource type="PackedScene" uid="uid://8mgainrx8wdt" path="res://Scenes/Weapons/weapon_controller.tscn" id="3_vs20u"]
+[ext_resource type="PackedScene" uid="uid://dsj5anf7vpvg4" path="res://Scenes/Weapons/weapon_ship_01.tscn" id="4_yx6e5"]
+[ext_resource type="PackedScene" uid="uid://cu7ykm4ptoak8" path="res://Scenes/Weapons/single_canon.tscn" id="5_l5tn5"]
+[ext_resource type="Script" path="res://Scripts/RayCastController/ray_cast_controller.gd" id="6_xog7x"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qui63"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_0gm5t"]
-properties/0/path = NodePath("Sprite2D:rotation")
+properties/0/path = NodePath("AnimationPlayer:current_animation")
 properties/0/spawn = true
 properties/0/replication_mode = 1
-properties/1/path = NodePath("AnimationPlayer:current_animation")
+properties/1/path = NodePath(".:position")
 properties/1/spawn = true
 properties/1/replication_mode = 1
-properties/2/path = NodePath(".:position")
+properties/2/path = NodePath(".:rotation")
 properties/2/spawn = true
 properties/2/replication_mode = 1
 
-[node name="Ship" type="CharacterBody2D"]
-script = ExtResource("1_rs7hx")
+[node name="Ship_01" type="CharacterBody2D" groups=["Player"]]
+disable_mode = 1
+collision_layer = 2
+platform_floor_layers = 4294967041
+platform_wall_layers = 1
+script = ExtResource("1_qcp34")
+health = 1500
+metadata/_edit_horizontal_guides_ = [-48.0, -25.0, 16.0]
+metadata/_edit_vertical_guides_ = [16.0, -16.0, 53.0, -53.0]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_3715q")
+texture = ExtResource("2_ujill")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qui63")
+}
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_0gm5t")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-15, -128, 15, -128, 46, -98, 46, -30, 37, -22, 37, 27, 53, 59, 53, 90, 37, 106, 37, 114, 23, 128, -23, 128, -37, 113, -37, 106, -53, 90, -53, 59, -37, 28, -37, -22, -46, -30, -45, -98)
+
+[node name="Weapons" parent="." instance=ExtResource("3_vs20u")]
+
+[node name="WeaponShip01" parent="Weapons" instance=ExtResource("4_yx6e5")]
+position = Vector2(-16, -48)
+
+[node name="WeaponShip02" parent="Weapons" instance=ExtResource("4_yx6e5")]
+position = Vector2(16, -48)
+
+[node name="SingleCanon" parent="Weapons" instance=ExtResource("5_l5tn5")]
+position = Vector2(-16, 16)
+
+[node name="SingleCanon2" parent="Weapons" instance=ExtResource("5_l5tn5")]
+position = Vector2(16, 16)
+
+[node name="RayCast" type="Node2D" parent="."]
+script = ExtResource("6_xog7x")
+
+[node name="Master" type="RayCast2D" parent="RayCast"]
+collision_mask = 3
+collide_with_areas = true
