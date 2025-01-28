@@ -44,6 +44,7 @@ texture = ExtResource("1_344mu")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="TextureRectLogo" type="TextureRect" parent="CanvasLayer"]
+physics_interpolation_mode = 1
 custom_minimum_size = Vector2(923, 158)
 anchors_preset = 5
 anchor_left = 0.5
@@ -62,6 +63,9 @@ offset_top = -518.0
 offset_right = 310.0
 grow_vertical = 0
 texture = ExtResource("4_i5o2u")
+
+[node name="bullet_spawn" type="Node2D" parent="CanvasLayer"]
+position = Vector2(262, 368)
 
 [node name="cannon" type="TextureRect" parent="CanvasLayer"]
 offset_left = 206.0

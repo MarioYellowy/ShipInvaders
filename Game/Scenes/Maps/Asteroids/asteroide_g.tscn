@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://6mpefy35k5xe"]
+
+[ext_resource type="Texture2D" uid="uid://bvip7ndyt16qm" path="res://Assets/Tiles/tile_50.png" id="1_wf60m"]
+
+[node name="Asteroid_G" type="StaticBody2D"]
+collision_mask = 14
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.529067, 0.529067, 0.529067, 1)
+texture = ExtResource("1_wf60m")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-27, -13, -10, -23, 5, -15, 18, -15, 27, -4, 26, 12, 11, 23, -9, 19, -23, 10, -19, -1)

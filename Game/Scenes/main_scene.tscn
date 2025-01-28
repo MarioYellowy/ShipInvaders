@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://dc45rog6v126l"]
 
-[ext_resource type="Script" path="res://Scenes/main_scene.gd" id="1_lhfgc"]
+[ext_resource type="Script" path="res://Scripts/main_scene.gd" id="1_ih13g"]
 
 [node name="Node" type="Node"]
-script = ExtResource("1_lhfgc")
+script = ExtResource("1_ih13g")
 
 [node name="LoginContainer" type="CenterContainer" parent="."]
 anchors_preset = 15
