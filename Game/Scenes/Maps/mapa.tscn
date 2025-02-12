@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bp5uttcx3dkje"]
 
-[ext_resource type="Texture2D" uid="uid://ce7d0xtl2muc7" path="res://Sprites/space_breaker_asset/space_breaker_asset/Background/stars_texture.png" id="2_b583g"]
+[ext_resource type="Texture2D" uid="uid://lly5yemqint5" path="res://Sprites/space_breaker_asset/space_breaker_asset/Background/stars_texture.png" id="2_b583g"]
 [ext_resource type="PackedScene" uid="uid://6mpefy35k5xe" path="res://Scenes/Maps/Asteroids/asteroide_g.tscn" id="3_5o7mp"]
 [ext_resource type="PackedScene" uid="uid://dgg3iobpirtd0" path="res://Scenes/Maps/Asteroids/asteroide_m.tscn" id="3_f6tl4"]
 [ext_resource type="PackedScene" uid="uid://c2y85m56nme7v" path="res://Scenes/Maps/Asteroids/asteroide_p.tscn" id="4_1d6jm"]

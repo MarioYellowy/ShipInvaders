@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://7nlrc61p3cir"]
+
+[node name="Menu" type="Node2D"]
+
+[node name="Menu" type="Control" parent="."]
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0470588, 0.0431373, 0.117647, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/ColorRect"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Menu/ColorRect/VBoxContainer"]
