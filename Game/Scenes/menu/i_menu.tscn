@@ -1,13 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://ck211joya21by"]
+[gd_scene load_steps=11 format=3 uid="uid://ck211joya21by"]
 
-[ext_resource type="Texture2D" uid="uid://ptsm40w3k0hy" path="res://Assets/img/Space Background.png" id="1_344mu"]
+[ext_resource type="Texture2D" uid="uid://cvavoopccckon" path="res://Assets/img/Space Background.png" id="1_344mu"]
 [ext_resource type="Script" path="res://Scripts/i_menu.gd" id="1_x1yoh"]
-[ext_resource type="Texture2D" uid="uid://cc0pgmyriwl5m" path="res://Assets/img/Logo.png" id="3_58na5"]
-[ext_resource type="Texture2D" uid="uid://c65evofu7lvth" path="res://Assets/img/vigasMenu.png" id="4_i5o2u"]
-[ext_resource type="Texture2D" uid="uid://cg7kduolb8nl8" path="res://Sprites/Tiles/image1.png" id="5_4s81o"]
-[ext_resource type="FontFile" uid="uid://cu2k1pv7cfn4n" path="res://Assets/fonts/Jersey_15/Jersey15-Regular.ttf" id="6_d0e44"]
-[ext_resource type="Texture2D" uid="uid://dsi8kw6awxe3q" path="res://Assets/img/Singleplayerbtn.png" id="7_vb5xd"]
-[ext_resource type="Texture2D" uid="uid://brn5p42x0eean" path="res://Assets/img/Multiplayerbtn.png" id="8_gyn3w"]
+[ext_resource type="Texture2D" uid="uid://3tsj4pxjlcap" path="res://Assets/img/Logo.png" id="3_58na5"]
+[ext_resource type="Texture2D" uid="uid://c63fnllna0ha7" path="res://Assets/img/vigasMenu.png" id="4_i5o2u"]
+[ext_resource type="FontFile" uid="uid://c2t5vr4ubar6a" path="res://Assets/fonts/Jersey_15/Jersey15-Regular.ttf" id="6_d0e44"]
+[ext_resource type="Texture2D" uid="uid://cex44aqdk22cm" path="res://Assets/img/Singleplayerbtn.png" id="7_vb5xd"]
+[ext_resource type="Texture2D" uid="uid://s6v81kw723k" path="res://Assets/img/Multiplayerbtn.png" id="8_gyn3w"]
 
 [sub_resource type="Theme" id="Theme_u6bfd"]
 
@@ -72,7 +71,7 @@ offset_left = 206.0
 offset_top = 347.0
 offset_right = 262.0
 offset_bottom = 387.0
-texture = ExtResource("5_4s81o")
+pivot_offset = Vector2(-154, -298)
 expand_mode = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
