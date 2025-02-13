@@ -11,3 +11,4 @@ func _process(delta: float) -> void:
 	#region look front
 	camera.rotation = rotation
 	#endregion
+	camera.rotation = rotation
