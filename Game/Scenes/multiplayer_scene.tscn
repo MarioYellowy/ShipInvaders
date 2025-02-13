@@ -1,0 +1,147 @@
+[gd_scene load_steps=15 format=3 uid="uid://dc45rog6v126l"]
+
+[ext_resource type="Script" path="res://Scripts/i_multiplayer_scene.gd" id="1_sggjm"]
+[ext_resource type="Texture2D" uid="uid://belmdm3rf8buf" path="res://Assets/img/space_background_multiplayer.png" id="2_54klx"]
+[ext_resource type="Texture2D" uid="uid://c63fnllna0ha7" path="res://Assets/img/vigasMenu.png" id="3_byafn"]
+[ext_resource type="Texture2D" uid="uid://bccjhw8bnpjce" path="res://Assets/img/MultiplayerTittleLogo.png" id="4_aegy3"]
+[ext_resource type="Texture2D" uid="uid://dl0u3md142cao" path="res://Assets/Tiles/canhon.png" id="4_k7rtl"]
+[ext_resource type="FontFile" uid="uid://c2t5vr4ubar6a" path="res://Assets/fonts/Jersey_15/Jersey15-Regular.ttf" id="5_hdp62"]
+[ext_resource type="Texture2D" uid="uid://ddlovy3ioyxpm" path="res://Assets/img/btnBlanco.png" id="6_xoi6a"]
+[ext_resource type="Texture2D" uid="uid://d4bv1q4qufiiv" path="res://Assets/img/btnAzul.png" id="7_yrg1w"]
+
+[sub_resource type="Animation" id="Animation_ghqcb"]
+resource_name = "tittleAnimation"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(241, 0), Vector2(241, 50), Vector2(241, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_diqcx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(241, 50)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n2asb"]
+_data = {
+"RESET": SubResource("Animation_diqcx"),
+"tittleAnimation": SubResource("Animation_ghqcb")
+}
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d0r6d"]
+texture = ExtResource("6_xoi6a")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t73r2"]
+texture = ExtResource("6_xoi6a")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kh46d"]
+texture = ExtResource("7_yrg1w")
+
+[node name="Node" type="Node"]
+script = ExtResource("1_sggjm")
+
+[node name="TextureRectBackground" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_54klx")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRectViga" type="TextureRect" parent="CanvasLayer"]
+offset_left = -4.0
+offset_top = 131.0
+offset_right = 306.0
+offset_bottom = 649.0
+texture = ExtResource("3_byafn")
+
+[node name="TextureRectCannon" type="TextureRect" parent="CanvasLayer"]
+offset_left = 198.0
+offset_top = 370.0
+offset_right = 254.0
+offset_bottom = 410.0
+texture = ExtResource("4_k7rtl")
+expand_mode = 3
+
+[node name="CannonSpawn" type="Node2D" parent="CanvasLayer/TextureRectCannon"]
+position = Vector2(58, 22)
+
+[node name="TextureRectTittleMultiplayer" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -335.0
+offset_top = 36.7776
+offset_right = 335.0
+offset_bottom = 189.778
+grow_horizontal = 2
+texture = ExtResource("4_aegy3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/TextureRectTittleMultiplayer"]
+libraries = {
+"": SubResource("AnimationLibrary_n2asb")
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -235.0
+offset_top = 28.0
+offset_right = 235.0
+offset_bottom = 243.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 35
+
+[node name="Join" type="Button" parent="CanvasLayer/VBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(470, 90)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_hdp62")
+theme_override_font_sizes/font_size = 75
+theme_override_styles/hover = SubResource("StyleBoxTexture_d0r6d")
+theme_override_styles/normal = SubResource("StyleBoxTexture_t73r2")
+text = "Join"
+
+[node name="Host" type="Button" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(470, 90)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("5_hdp62")
+theme_override_font_sizes/font_size = 75
+theme_override_styles/normal = SubResource("StyleBoxTexture_kh46d")
+text = "Host"
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="CanvasLayer"]
+_spawnable_scenes = PackedStringArray("res://Scenes/ship.tscn")
+spawn_path = NodePath("../../Players")
+
+[node name="Players" type="Node2D" parent="."]
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Join" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Host" to="." method="_on_host_pressed"]

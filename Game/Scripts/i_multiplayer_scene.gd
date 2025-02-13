@@ -1,18 +1,28 @@
-extends Control
+extends Node
 
+var peer: ENetMultiplayerPeer = ENetMultiplayerPeer.new()
 var current_index = 0
-var buttons = []  
-@onready var cannon = $CanvasLayer/cannon 
-@onready var bullet_scene = preload("res://Assets/Tiles/canonball.png")
-@onready var spawn_point = $CanvasLayer/bullet_spawn
-@onready var anim_player = $CanvasLayer/TextureRectLogo/AnimationPlayer
+var buttons = [] 
 
-func _ready():
+@onready var hud: CenterContainer = $LoginContainer
+@onready var cannon = $CanvasLayer/TextureRectCannon
+@onready var bullet_scene = preload("res://Assets/Tiles/canonball.png")
+@onready var spawn_point = $CanvasLayer/TextureRectCannon/CannonSpawn
+@onready var anim_player = $CanvasLayer/TextureRectTittleMultiplayer/AnimationPlayer
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
 	anim_player.play("tittleAnimation")
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	buttons = $CanvasLayer/VBoxContainer.get_children()
 	update_cannon_position()
+	if OS.has_feature("dedicated_server"):
+		print("Starting dedicated server...")
+		MultiplayerManager.become_host()
+		
 
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_up"):
 		move_up()
@@ -20,8 +30,7 @@ func _process(_delta):
 		move_down()
 	elif Input.is_action_just_pressed("ui_accept"):
 		shoot_bullet()
-		
-
+			
 func move_up():
 	if current_index > 0:
 		current_index -= 1
@@ -53,13 +62,7 @@ func execute_selected_button_action():
 	var selected_button = buttons[current_index]
 	if selected_button and selected_button.has_signal("pressed"):
 		selected_button.emit_signal("pressed")
-
-func _on_singleplayer_button_pressed():
-	get_tree().change_scene_to_file("res://Scenes/main_scene.tscn")
-
-func _on_multiplayer_button_pressed():
-	get_tree().change_scene_to_file('res://Scenes/main_scene.tscn')
-	
+		
 func shoot_bullet():
 	var bullet = Sprite2D.new()
 	bullet.texture = bullet_scene
@@ -99,3 +102,14 @@ func _on_bullet_animation_finished(target_button, bullet):
 				get_tree().change_scene_to_file("res://Scenes/main_scene.tscn")  # Singleplayer
 			1:
 				get_tree().change_scene_to_file("res://Scenes/multiplayer_scene.tscn")
+
+func _on_join_pressed() -> void:
+	MultiplayerManager.join()
+	hud.hide()
+	
+
+
+func _on_host_pressed() -> void:
+	MultiplayerManager.become_host()
+	hud.hide()
+	
