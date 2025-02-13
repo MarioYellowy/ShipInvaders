@@ -3,21 +3,24 @@ extends Control
 var current_index = 0
 var buttons = []  
 @onready var cannon = $CanvasLayer/cannon 
-@onready var bullet_scene = preload("res://Assets/img/canonball.svg") 
+@onready var bullet_scene = preload("res://Assets/Tiles/canonball.png")
 @onready var spawn_point = $CanvasLayer/bullet_spawn
+@onready var anim_player = $CanvasLayer/TextureRectLogo/AnimationPlayer
 
 func _ready():
+	anim_player.play("tittleAnimation")
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	buttons = $CanvasLayer/VBoxContainer.get_children()
 	update_cannon_position()
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("ui_up"):
 		move_up()
 	elif Input.is_action_just_pressed("ui_down"):
 		move_down()
 	elif Input.is_action_just_pressed("ui_accept"):
 		shoot_bullet()
-		execute_selected_button_action()
+		
 
 func move_up():
 	if current_index > 0:
@@ -55,36 +58,44 @@ func _on_singleplayer_button_pressed():
 	get_tree().change_scene_to_file("res://Scenes/main_scene.tscn")
 
 func _on_multiplayer_button_pressed():
-	pass
+	get_tree().change_scene_to_file('res://Scenes/main_scene.tscn')
 	
 func shoot_bullet():
-	# Instancia la bala y posiciónala en el punto de disparo
-	var bullet = bullet_scene.instance()
-	bullet.global_position = spawn_point.global_position
+	var bullet = Sprite2D.new()
+	bullet.texture = bullet_scene
+	var spawn_position = Vector2(spawn_point.global_position.x, cannon.global_position.y + 20)
+	bullet.global_position = spawn_position
+	bullet.scale = Vector2(0.20, 0.20)
+	bullet.z_index = 100  
+	bullet.z_as_relative = true
 	add_child(bullet)
 
-	# Calcula la posición objetivo (el botón seleccionado)
 	var target_button = buttons[current_index]
 	if target_button:
 		var target_position = target_button.get_global_position()
+		target_position.y = spawn_position.y
 
-	# Usa un Tween para mover la bala hacia el objetivo
 		var tween = create_tween()
 		tween.tween_property(bullet, "global_position", target_position, 0.5)
 		tween.set_trans(Tween.TRANS_QUAD)
 		tween.set_ease(Tween.EASE_IN_OUT)
 		tween.finished.connect(func() -> void:
 			_on_bullet_animation_finished(target_button, bullet)
-		)
+			)
 
 func _on_tween_finished_wrapper(target_button, bullet):
 	_on_bullet_animation_finished(target_button, bullet)
 
 func _on_bullet_animation_finished(target_button, bullet):
-	# Emite la señal del botón seleccionado
 	if target_button and target_button.has_signal("pressed"):
 		target_button.emit_signal("pressed")
 	
-	# Elimina la bala después de la animación
 	if bullet:
 		bullet.queue_free()
+		
+	if get_tree():
+		match current_index:
+			0:
+				get_tree().change_scene_to_file("res://Scenes/main_scene.tscn")  # Singleplayer
+			1:
+				get_tree().change_scene_to_file("res://Scenes/main_scene.tscn")
