@@ -1,6 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://dc45rog6v126l"]
+[gd_scene load_steps=3 format=3 uid="uid://dc45rog6v126l"]
 
 [ext_resource type="Script" path="res://Scenes/main_scene.gd" id="1_lhfgc"]
+
+[sub_resource type="GDScript" id="GDScript_1ilnb"]
+script/source = "extends MultiplayerSpawner
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
 
 [node name="Node" type="Node"]
 script = ExtResource("1_lhfgc")
@@ -28,6 +42,7 @@ text = "HOST"
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://Scenes/ship.tscn")
 spawn_path = NodePath("../Players")
+script = SubResource("GDScript_1ilnb")
 
 [node name="Players" type="Node2D" parent="."]
 

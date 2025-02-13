@@ -1,7 +1,18 @@
 [gd_scene load_steps=4 format=3 uid="uid://bo30871pjoie3"]
 
+<<<<<<< Updated upstream
 [ext_resource type="Script" path="res://Scripts/Ship.gd" id="1_rs7hx"]
 [ext_resource type="Texture2D" uid="uid://cyw1k3xpmw3aj" path="res://Sprites/Ships/ship (2).png" id="2_3715q"]
+=======
+[ext_resource type="Script" path="res://Scripts/Characters/Ships/ship_01.gd" id="1_qcp34"]
+[ext_resource type="Texture2D" uid="uid://dbw3o4x2vlfwx" path="res://Assets/Sprites/Ships/body_01.png" id="2_ujill"]
+[ext_resource type="PackedScene" uid="uid://8mgainrx8wdt" path="res://Scenes/Weapons/weapon_controller.tscn" id="3_vs20u"]
+[ext_resource type="PackedScene" uid="uid://dsj5anf7vpvg4" path="res://Scenes/Weapons/weapon_ship_01.tscn" id="4_yx6e5"]
+[ext_resource type="PackedScene" uid="uid://cu7ykm4ptoak8" path="res://Scenes/Weapons/single_canon.tscn" id="5_l5tn5"]
+[ext_resource type="Script" path="res://Scripts/RayCastController/ray_cast_controller.gd" id="6_xog7x"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qui63"]
+>>>>>>> Stashed changes
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_0gm5t"]
 properties/0/path = NodePath("Sprite2D:rotation")
@@ -16,6 +27,9 @@ properties/2/replication_mode = 1
 
 [node name="Ship" type="CharacterBody2D"]
 script = ExtResource("1_rs7hx")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.2, 0.2)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_3715q")

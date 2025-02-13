@@ -1,0 +1,254 @@
+[gd_scene load_steps=9 format=3 uid="uid://bp5uttcx3dkje"]
+
+[ext_resource type="Texture2D" uid="uid://ce75evv8622qq" path="res://Sprites/space_breaker_asset/space_breaker_asset/Background/stars_texture.png" id="2_b583g"]
+[ext_resource type="PackedScene" uid="uid://6mpefy35k5xe" path="res://Scenes/Maps/Asteroids/asteroide_g.tscn" id="3_5o7mp"]
+[ext_resource type="PackedScene" uid="uid://dgg3iobpirtd0" path="res://Scenes/Maps/Asteroids/asteroide_m.tscn" id="3_f6tl4"]
+[ext_resource type="PackedScene" uid="uid://c2y85m56nme7v" path="res://Scenes/Maps/Asteroids/asteroide_p.tscn" id="4_1d6jm"]
+[ext_resource type="Script" path="res://Scenes/Maps/spawn_controller.gd" id="5_wcmgv"]
+[ext_resource type="PackedScene" uid="uid://bo30871pjoie3" path="res://Scenes/ship.tscn" id="6_aimk0"]
+
+[sub_resource type="GDScript" id="GDScript_mlwtt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6a2po"]
+radius = 696.348
+
+[node name="Mapa" type="Node2D"]
+z_index = 1
+z_as_relative = false
+script = SubResource("GDScript_mlwtt")
+
+[node name="background" type="Node2D" parent="."]
+scale = Vector2(2.3, 2.3)
+metadata/_edit_lock_ = true
+
+[node name="row" type="Node2D" parent="background"]
+
+[node name="Fondo" type="Sprite2D" parent="background/row"]
+position = Vector2(512, 512)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_b583g")
+
+[node name="Fondo2" type="Sprite2D" parent="background/row"]
+position = Vector2(1536, 512)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_b583g")
+
+[node name="Fondo3" type="Sprite2D" parent="background/row"]
+visible = false
+position = Vector2(2560, 512)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_b583g")
+
+[node name="Fondo4" type="Sprite2D" parent="background/row"]
+visible = false
+position = Vector2(3584, 512)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_b583g")
+
+[node name="row2" type="Node2D" parent="background"]
+
+[node name="Fondo" type="Sprite2D" parent="background/row2"]
+position = Vector2(512, 1528)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_b583g")
+
+[node name="Fondo2" type="Sprite2D" parent="background/row2"]
+position = Vector2(1536, 1528)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_b583g")
+
+[node name="Fondo3" type="Sprite2D" parent="background/row2"]
+visible = false
+position = Vector2(2560, 1528)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_b583g")
+
+[node name="Fondo4" type="Sprite2D" parent="background/row2"]
+visible = false
+position = Vector2(3584, 1528)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_b583g")
+
+[node name="row3" type="Node2D" parent="background"]
+visible = false
+
+[node name="Fondo" type="Sprite2D" parent="background/row3"]
+position = Vector2(512, 2552)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_b583g")
+
+[node name="Fondo2" type="Sprite2D" parent="background/row3"]
+position = Vector2(1536, 2552)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_b583g")
+
+[node name="Fondo3" type="Sprite2D" parent="background/row3"]
+visible = false
+position = Vector2(2560, 2552)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_b583g")
+
+[node name="Fondo4" type="Sprite2D" parent="background/row3"]
+visible = false
+position = Vector2(3584, 2552)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_b583g")
+
+[node name="row4" type="Node2D" parent="background"]
+visible = false
+
+[node name="Fondo" type="Sprite2D" parent="background/row4"]
+position = Vector2(512, 3576.29)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_b583g")
+
+[node name="Fondo2" type="Sprite2D" parent="background/row4"]
+position = Vector2(1536, 3576.29)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_b583g")
+
+[node name="Fondo3" type="Sprite2D" parent="background/row4"]
+position = Vector2(2560, 3576.29)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_b583g")
+
+[node name="Fondo4" type="Sprite2D" parent="background/row4"]
+position = Vector2(3584, 3576.29)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_b583g")
+
+[node name="Asteroids" type="Node2D" parent="."]
+
+[node name="Asteroid_G" parent="Asteroids" instance=ExtResource("3_5o7mp")]
+position = Vector2(1923, 1032)
+rotation = 1.49578
+scale = Vector2(7, 7)
+
+[node name="Asteroid_G2" parent="Asteroids" instance=ExtResource("3_5o7mp")]
+position = Vector2(2619, 1851)
+rotation = -1.17138
+scale = Vector2(7, 7)
+
+[node name="Asteroid_G3" parent="Asteroids" instance=ExtResource("3_5o7mp")]
+position = Vector2(3417, 2478)
+rotation = 0.313596
+scale = Vector2(7, 7)
+
+[node name="Asteroid_G4" parent="Asteroids" instance=ExtResource("3_5o7mp")]
+position = Vector2(3396, 1566)
+rotation = -1.74495
+scale = Vector2(7, 7)
+
+[node name="Asteroid_G6" parent="Asteroids" instance=ExtResource("3_5o7mp")]
+position = Vector2(4465, 1160)
+rotation = -1.74495
+scale = Vector2(7, 7)
+
+[node name="Asteroid_G7" parent="Asteroids" instance=ExtResource("3_5o7mp")]
+position = Vector2(4172, 2129)
+rotation = 0.745171
+scale = Vector2(7, 7)
+
+[node name="Asteroid_G8" parent="Asteroids" instance=ExtResource("3_5o7mp")]
+position = Vector2(252.001, 274)
+rotation = -1.74495
+scale = Vector2(7, 7)
+
+[node name="Asteroid_G9" parent="Asteroids" instance=ExtResource("3_5o7mp")]
+position = Vector2(1017, 610)
+rotation = -2.51478
+scale = Vector2(7, 7)
+
+[node name="Asteroid_G5" parent="Asteroids" instance=ExtResource("3_5o7mp")]
+position = Vector2(2576, 322)
+rotation = -1.74495
+scale = Vector2(7, 7)
+
+[node name="Asteroid_m" parent="Asteroids" instance=ExtResource("3_f6tl4")]
+position = Vector2(2830, 1100)
+rotation = 0.543062
+scale = Vector2(5, 5)
+
+[node name="Asteroid_p" parent="Asteroids" instance=ExtResource("4_1d6jm")]
+position = Vector2(1634, 1498)
+scale = Vector2(5, 5)
+
+[node name="Asteroids2" type="Node2D" parent="."]
+position = Vector2(4710, 4692)
+rotation = 3.14159
+
+[node name="Asteroid_G" parent="Asteroids2" instance=ExtResource("3_5o7mp")]
+position = Vector2(1923, 1032)
+rotation = 1.49578
+scale = Vector2(7, 7)
+
+[node name="Asteroid_G2" parent="Asteroids2" instance=ExtResource("3_5o7mp")]
+position = Vector2(2619, 1851)
+rotation = -1.17138
+scale = Vector2(7, 7)
+
+[node name="Asteroid_G3" parent="Asteroids2" instance=ExtResource("3_5o7mp")]
+position = Vector2(3417, 2478)
+rotation = 0.313596
+scale = Vector2(7, 7)
+
+[node name="Asteroid_G4" parent="Asteroids2" instance=ExtResource("3_5o7mp")]
+position = Vector2(3396, 1566)
+rotation = -1.74495
+scale = Vector2(7, 7)
+
+[node name="Asteroid_G6" parent="Asteroids2" instance=ExtResource("3_5o7mp")]
+position = Vector2(4465, 1160)
+rotation = -1.74495
+scale = Vector2(7, 7)
+
+[node name="Asteroid_G7" parent="Asteroids2" instance=ExtResource("3_5o7mp")]
+position = Vector2(4172, 2129)
+rotation = 0.745171
+scale = Vector2(7, 7)
+
+[node name="Asteroid_G8" parent="Asteroids2" instance=ExtResource("3_5o7mp")]
+position = Vector2(252.001, 274)
+rotation = -1.74495
+scale = Vector2(7, 7)
+
+[node name="Asteroid_G9" parent="Asteroids2" instance=ExtResource("3_5o7mp")]
+position = Vector2(1017, 610)
+rotation = -2.51478
+scale = Vector2(7, 7)
+
+[node name="Asteroid_G5" parent="Asteroids2" instance=ExtResource("3_5o7mp")]
+position = Vector2(2576, 322)
+rotation = -1.74495
+scale = Vector2(7, 7)
+
+[node name="Asteroid_m" parent="Asteroids2" instance=ExtResource("3_f6tl4")]
+position = Vector2(2830, 1100)
+rotation = 0.543062
+scale = Vector2(5, 5)
+
+[node name="Asteroid_p" parent="Asteroids2" instance=ExtResource("4_1d6jm")]
+position = Vector2(1634, 1498)
+scale = Vector2(5, 5)
+
+[node name="SpawnController" type="Node2D" parent="."]
+script = ExtResource("5_wcmgv")
+player_scene = ExtResource("6_aimk0")
+
+[node name="SpawnA" type="Marker2D" parent="SpawnController"]
+position = Vector2(899, 4137)
+
+[node name="SpawnB" type="Marker2D" parent="SpawnController"]
+position = Vector2(3593, 673)
+
+[node name="AreaA" type="Area2D" parent="."]
+position = Vector2(933, 942)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaA"]
+shape = SubResource("CircleShape2D_6a2po")
+
+[node name="AreaB" type="Area2D" parent="."]
+position = Vector2(3417, 3476)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaB"]
+shape = SubResource("CircleShape2D_6a2po")
