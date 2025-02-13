@@ -1,0 +1,129 @@
+[gd_scene load_steps=14 format=3 uid="uid://c7ncy6on33bg1"]
+
+[ext_resource type="Script" path="res://Scripts/i_join_scene.gd" id="1_bwor1"]
+[ext_resource type="Texture2D" uid="uid://57o1k1qhmq3v" path="res://Assets/img/space_background_join.png" id="1_jxej7"]
+[ext_resource type="Texture2D" uid="uid://2yk112fg1tsl" path="res://Assets/img/JoinTittleLogo.png" id="2_7tww3"]
+[ext_resource type="Texture2D" uid="uid://bt0eeycowsguo" path="res://Assets/img/JoinSubTittleLogo.png" id="3_3yl0q"]
+[ext_resource type="Texture2D" uid="uid://bee0wcqg1lplp" path="res://Assets/img/btnVerde.png" id="4_4g5wx"]
+[ext_resource type="Texture2D" uid="uid://vef5c4i3tbwo" path="res://Assets/img/btnVerdeOscuro.png" id="5_xye1g"]
+
+[sub_resource type="Animation" id="Animation_ya62d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(264.5, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xu6pc"]
+resource_name = "tittleAnimation"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(264.5, 0), Vector2(264.5, 37), Vector2(264.5, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bu72o"]
+_data = {
+"RESET": SubResource("Animation_ya62d"),
+"tittleAnimation": SubResource("Animation_xu6pc")
+}
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wdyjg"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_05ejp"]
+texture = ExtResource("4_4g5wx")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iv6fi"]
+texture = ExtResource("5_xye1g")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f0nqv"]
+texture = ExtResource("5_xye1g")
+
+[node name="JoinScene" type="Node2D"]
+script = ExtResource("1_bwor1")
+
+[node name="TextureRectBackground" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_jxej7")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRectTittle" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -311.5
+offset_right = 311.5
+offset_bottom = 158.0
+grow_horizontal = 2
+texture = ExtResource("2_7tww3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/TextureRectTittle"]
+libraries = {
+"": SubResource("AnimationLibrary_bu72o")
+}
+
+[node name="TextureRectSubTittle" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.393
+anchor_right = 0.5
+anchor_bottom = 0.393
+offset_left = -127.0
+offset_top = -37.664
+offset_right = 385.0
+offset_bottom = 113.336
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+texture = ExtResource("3_3yl0q")
+
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer"]
+material = SubResource("CanvasItemMaterial_wdyjg")
+offset_left = 38.0
+offset_top = 349.0
+offset_right = 1088.0
+offset_bottom = 483.0
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxTexture_05ejp")
+placeholder_text = "Insert Ip:"
+alignment = 1
+
+[node name="ButtonJoin" type="Button" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -168.0
+offset_top = -117.0
+offset_right = 172.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+theme_override_styles/hover = SubResource("StyleBoxTexture_iv6fi")
+theme_override_styles/normal = SubResource("StyleBoxTexture_f0nqv")
+action_mode = 0
+text = "Join"
+
+[connection signal="text_submitted" from="CanvasLayer/LineEdit" to="." method="_on_line_edit_text_submitted"]

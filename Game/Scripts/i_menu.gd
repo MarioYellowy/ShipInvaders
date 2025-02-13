@@ -55,10 +55,10 @@ func execute_selected_button_action():
 		selected_button.emit_signal("pressed")
 
 func _on_singleplayer_button_pressed():
-	get_tree().change_scene_to_file("res://Scenes/main_scene.tscn")
+	get_tree().change_scene_to_file("res://Scenes/multiplayer_scene.tscn")
 
 func _on_multiplayer_button_pressed():
-	get_tree().change_scene_to_file('res://Scenes/main_scene.tscn')
+	get_tree().change_scene_to_file("res://Scenes/multiplayer_scene.tscn")
 	
 func shoot_bullet():
 	var bullet = Sprite2D.new()

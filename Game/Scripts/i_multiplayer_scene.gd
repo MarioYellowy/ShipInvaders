@@ -4,7 +4,6 @@ var peer: ENetMultiplayerPeer = ENetMultiplayerPeer.new()
 var current_index = 0
 var buttons = [] 
 
-@onready var hud: CenterContainer = $LoginContainer
 @onready var cannon = $CanvasLayer/TextureRectCannon
 @onready var bullet_scene = preload("res://Assets/Tiles/canonball.png")
 @onready var spawn_point = $CanvasLayer/TextureRectCannon/CannonSpawn
@@ -99,17 +98,17 @@ func _on_bullet_animation_finished(target_button, bullet):
 	if get_tree():
 		match current_index:
 			0:
-				get_tree().change_scene_to_file("res://Scenes/main_scene.tscn")  # Singleplayer
+				get_tree().change_scene_to_file("res://Scenes/join_scene.tscn")  # Singleplayer
 			1:
-				get_tree().change_scene_to_file("res://Scenes/multiplayer_scene.tscn")
+				get_tree().change_scene_to_file("res://Scenes/join_scene.tscn")
 
 func _on_join_pressed() -> void:
 	MultiplayerManager.join()
-	hud.hide()
+	
 	
 
 
 func _on_host_pressed() -> void:
 	MultiplayerManager.become_host()
-	hud.hide()
+
 	
