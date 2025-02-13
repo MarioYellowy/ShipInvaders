@@ -11,7 +11,4 @@ func _process(delta: float) -> void:
 	#region look front
 	camera.rotation = rotation
 	#endregion
-<<<<<<< HEAD
-=======
 	camera.rotation = rotation
->>>>>>> Gabo
