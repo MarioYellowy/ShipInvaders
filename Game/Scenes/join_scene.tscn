@@ -1,11 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://c7ncy6on33bg1"]
+[gd_scene load_steps=15 format=3 uid="uid://c7ncy6on33bg1"]
 
 [ext_resource type="Script" path="res://Scripts/i_join_scene.gd" id="1_bwor1"]
-[ext_resource type="Texture2D" uid="uid://57o1k1qhmq3v" path="res://Assets/img/space_background_join.png" id="1_jxej7"]
-[ext_resource type="Texture2D" uid="uid://2yk112fg1tsl" path="res://Assets/img/JoinTittleLogo.png" id="2_7tww3"]
-[ext_resource type="Texture2D" uid="uid://bt0eeycowsguo" path="res://Assets/img/JoinSubTittleLogo.png" id="3_3yl0q"]
-[ext_resource type="Texture2D" uid="uid://bee0wcqg1lplp" path="res://Assets/img/btnVerde.png" id="4_4g5wx"]
-[ext_resource type="Texture2D" uid="uid://vef5c4i3tbwo" path="res://Assets/img/btnVerdeOscuro.png" id="5_xye1g"]
+[ext_resource type="Texture2D" uid="uid://cpg021yigjo0y" path="res://Assets/img/space_background_join.png" id="1_jxej7"]
+[ext_resource type="Texture2D" uid="uid://di2myd542frtc" path="res://Assets/img/JoinTittleLogo.png" id="2_7tww3"]
+[ext_resource type="Texture2D" uid="uid://cdpd832wa7tf2" path="res://Assets/img/JoinSubTittleLogo.png" id="3_3yl0q"]
+[ext_resource type="Texture2D" uid="uid://1igd31acqey1" path="res://Assets/img/portLogo.png" id="4_lhwnq"]
+[ext_resource type="Texture2D" uid="uid://cva5pdmdutq3n" path="res://Assets/img/btnVerdeOscuro.png" id="5_xye1g"]
+[ext_resource type="Texture2D" uid="uid://yjhvoc4v0d11" path="res://Assets/img/btnVerdeShort.png" id="6_7xyqv"]
 
 [sub_resource type="Animation" id="Animation_ya62d"]
 length = 0.001
@@ -48,7 +49,7 @@ _data = {
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wdyjg"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_05ejp"]
-texture = ExtResource("4_4g5wx")
+texture = ExtResource("6_7xyqv")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iv6fi"]
 texture = ExtResource("5_xye1g")
@@ -81,31 +82,59 @@ libraries = {
 "": SubResource("AnimationLibrary_bu72o")
 }
 
+[node name="TextureRectSubTittle2" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.393
+anchor_right = 0.5
+anchor_bottom = 0.393
+offset_left = 305.0
+offset_top = -22.664
+offset_right = 583.0
+offset_bottom = 127.336
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+texture = ExtResource("4_lhwnq")
+expand_mode = 1
+
 [node name="TextureRectSubTittle" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.393
 anchor_right = 0.5
 anchor_bottom = 0.393
-offset_left = -127.0
-offset_top = -37.664
-offset_right = 385.0
-offset_bottom = 113.336
+offset_left = -268.0
+offset_top = -21.664
+offset_right = 244.0
+offset_bottom = 129.336
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 size_flags_horizontal = 4
 texture = ExtResource("3_3yl0q")
 
-[node name="LineEdit" type="LineEdit" parent="CanvasLayer"]
+[node name="ip_line" type="LineEdit" parent="CanvasLayer"]
 material = SubResource("CanvasItemMaterial_wdyjg")
 offset_left = 38.0
 offset_top = 349.0
-offset_right = 1088.0
-offset_bottom = 483.0
+offset_right = 767.0
+offset_bottom = 458.0
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxTexture_05ejp")
 placeholder_text = "Insert Ip:"
+alignment = 1
+
+[node name="port_line" type="LineEdit" parent="CanvasLayer"]
+material = SubResource("CanvasItemMaterial_wdyjg")
+offset_left = 847.0
+offset_top = 348.0
+offset_right = 1074.0
+offset_bottom = 457.0
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxTexture_05ejp")
+placeholder_text = "Port:"
 alignment = 1
 
 [node name="ButtonJoin" type="Button" parent="CanvasLayer"]
@@ -126,4 +155,5 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_f0nqv")
 action_mode = 0
 text = "Join"
 
-[connection signal="text_submitted" from="CanvasLayer/LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="text_submitted" from="CanvasLayer/ip_line" to="." method="_on_line_edit_text_submitted"]
+[connection signal="text_submitted" from="CanvasLayer/port_line" to="." method="_on_line_edit_text_submitted"]

@@ -98,9 +98,9 @@ func _on_bullet_animation_finished(target_button, bullet):
 	if get_tree():
 		match current_index:
 			0:
-				get_tree().change_scene_to_file("res://Scenes/join_scene.tscn")  # Singleplayer
+				get_tree().change_scene_to_file("res://Scenes/join_scene.tscn") 
 			1:
-				get_tree().change_scene_to_file("res://Scenes/join_scene.tscn")
+				get_tree().change_scene_to_file("res://Scenes/Maps/mapa.tscn")
 
 func _on_join_pressed() -> void:
 	MultiplayerManager.join()
