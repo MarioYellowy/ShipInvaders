@@ -1,20 +1,12 @@
 [gd_scene load_steps=15 format=3 uid="uid://c7ncy6on33bg1"]
 
 [ext_resource type="Script" path="res://Scripts/i_join_scene.gd" id="1_bwor1"]
-<<<<<<< HEAD
-[ext_resource type="Texture2D" uid="uid://cp50fnhmtr07i" path="res://Assets/img/space_background_join.png" id="1_jxej7"]
-[ext_resource type="Texture2D" uid="uid://b5kwwaxtgy1gw" path="res://Assets/img/JoinTittleLogo.png" id="2_7tww3"]
-[ext_resource type="Texture2D" uid="uid://w5o1k0lict2" path="res://Assets/img/JoinSubTittleLogo.png" id="3_3yl0q"]
-[ext_resource type="Texture2D" uid="uid://cy1hjxaaempyn" path="res://Assets/img/btnVerde.png" id="4_4g5wx"]
-[ext_resource type="Texture2D" uid="uid://r03rus5a0ptm" path="res://Assets/img/btnVerdeOscuro.png" id="5_xye1g"]
-=======
 [ext_resource type="Texture2D" uid="uid://cpg021yigjo0y" path="res://Assets/img/space_background_join.png" id="1_jxej7"]
 [ext_resource type="Texture2D" uid="uid://di2myd542frtc" path="res://Assets/img/JoinTittleLogo.png" id="2_7tww3"]
 [ext_resource type="Texture2D" uid="uid://cdpd832wa7tf2" path="res://Assets/img/JoinSubTittleLogo.png" id="3_3yl0q"]
 [ext_resource type="Texture2D" uid="uid://1igd31acqey1" path="res://Assets/img/portLogo.png" id="4_lhwnq"]
 [ext_resource type="Texture2D" uid="uid://cva5pdmdutq3n" path="res://Assets/img/btnVerdeOscuro.png" id="5_xye1g"]
 [ext_resource type="Texture2D" uid="uid://yjhvoc4v0d11" path="res://Assets/img/btnVerdeShort.png" id="6_7xyqv"]
->>>>>>> Mario
 
 [sub_resource type="Animation" id="Animation_ya62d"]
 length = 0.001

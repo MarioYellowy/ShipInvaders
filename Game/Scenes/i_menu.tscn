@@ -1,7 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://ck211joya21by"]
 
 [ext_resource type="Script" path="res://Scripts/i_menu.gd" id="1_573ku"]
-<<<<<<< HEAD
 [ext_resource type="Texture2D" uid="uid://cqhp5vimsnl3d" path="res://Assets/img/Space Background.png" id="2_twk3o"]
 [ext_resource type="Texture2D" uid="uid://bgc78ed0egi12" path="res://Assets/img/Logo.png" id="3_ysmqx"]
 [ext_resource type="Texture2D" uid="uid://dycn064sq7n2w" path="res://Assets/img/vigasMenu.png" id="4_wjiqa"]
@@ -9,15 +8,6 @@
 [ext_resource type="FontFile" uid="uid://dwbclmmqye2yu" path="res://Assets/fonts/Jersey_15/Jersey15-Regular.ttf" id="6_7kon6"]
 [ext_resource type="Texture2D" uid="uid://cag3q067jf0yd" path="res://Assets/img/Singleplayerbtn.png" id="7_0efft"]
 [ext_resource type="Texture2D" uid="uid://c12q35mf73ghj" path="res://Assets/img/Multiplayerbtn.png" id="8_3x8f6"]
-=======
-[ext_resource type="Texture2D" uid="uid://xgepr0aishbh" path="res://Assets/img/Space Background.png" id="2_twk3o"]
-[ext_resource type="Texture2D" uid="uid://c8kukvjdkes1a" path="res://Assets/img/Logo.png" id="3_ysmqx"]
-[ext_resource type="Texture2D" uid="uid://cgonc5dp6ajip" path="res://Assets/img/vigasMenu.png" id="4_wjiqa"]
-[ext_resource type="Texture2D" uid="uid://8rapi0rluj7" path="res://Assets/Tiles/canhon.png" id="5_qfcwf"]
-[ext_resource type="FontFile" uid="uid://btdfc707e0v2o" path="res://Assets/fonts/Jersey_15/Jersey15-Regular.ttf" id="6_7kon6"]
-[ext_resource type="Texture2D" uid="uid://dicifj7kihkt2" path="res://Assets/img/Singleplayerbtn.png" id="7_0efft"]
-[ext_resource type="Texture2D" uid="uid://bkejgai6b4sgm" path="res://Assets/img/Multiplayerbtn.png" id="8_3x8f6"]
->>>>>>> Mario
 
 [sub_resource type="Animation" id="Animation_67go0"]
 length = 0.001
