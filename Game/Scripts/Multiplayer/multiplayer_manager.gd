@@ -2,13 +2,20 @@ extends Node
 
 const SERVER_PORT = 6666
 const SERVER_IP = "localhost"
+var is_host: bool = false
 
+func start() -> void:
+	if is_host:
+		become_host()
+	else:
+		join()
 
 func join() -> void:
 	var peer = ENetMultiplayerPeer.new()
 	peer.create_client(SERVER_IP, SERVER_PORT)
 	multiplayer.multiplayer_peer = peer
 var _players_spawn_node: Node
+
 
 func become_host():
 	var peer = ENetMultiplayerPeer.new()
@@ -24,6 +31,10 @@ func become_host():
 	
 func _on_peer_connected(id: int = 1):
 	print("PLayer %s joined the game" % id)
+	_players_spawn_node = get_tree().get_current_scene().get_node_or_null("Players")
+	if _players_spawn_node == null:
+		printerr("Error: El nodo 'Players' no existe en la escena.")
+		return
 	var player_escene = load("res://Scenes/ship.tscn")
 	var player_instance = player_escene.instantiate()
 	player_instance.name = str(id)

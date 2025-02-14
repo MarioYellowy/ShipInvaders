@@ -1,6 +1,5 @@
 extends Node
 
-var peer: ENetMultiplayerPeer = ENetMultiplayerPeer.new()
 var current_index = 0
 var buttons = [] 
 
@@ -103,12 +102,12 @@ func _on_bullet_animation_finished(target_button, bullet):
 				get_tree().change_scene_to_file("res://Scenes/join_scene.tscn")
 
 func _on_join_pressed() -> void:
-	MultiplayerManager.join()
+	MultiplayerManager.is_host = false
 	
 	
 
 
 func _on_host_pressed() -> void:
-	MultiplayerManager.become_host()
+	MultiplayerManager.is_host = true
 
 	

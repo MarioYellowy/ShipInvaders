@@ -1,11 +1,11 @@
 [gd_scene load_steps=14 format=3 uid="uid://c7ncy6on33bg1"]
 
 [ext_resource type="Script" path="res://Scripts/i_join_scene.gd" id="1_bwor1"]
-[ext_resource type="Texture2D" uid="uid://57o1k1qhmq3v" path="res://Assets/img/space_background_join.png" id="1_jxej7"]
-[ext_resource type="Texture2D" uid="uid://2yk112fg1tsl" path="res://Assets/img/JoinTittleLogo.png" id="2_7tww3"]
-[ext_resource type="Texture2D" uid="uid://bt0eeycowsguo" path="res://Assets/img/JoinSubTittleLogo.png" id="3_3yl0q"]
-[ext_resource type="Texture2D" uid="uid://bee0wcqg1lplp" path="res://Assets/img/btnVerde.png" id="4_4g5wx"]
-[ext_resource type="Texture2D" uid="uid://vef5c4i3tbwo" path="res://Assets/img/btnVerdeOscuro.png" id="5_xye1g"]
+[ext_resource type="Texture2D" uid="uid://cp50fnhmtr07i" path="res://Assets/img/space_background_join.png" id="1_jxej7"]
+[ext_resource type="Texture2D" uid="uid://b5kwwaxtgy1gw" path="res://Assets/img/JoinTittleLogo.png" id="2_7tww3"]
+[ext_resource type="Texture2D" uid="uid://w5o1k0lict2" path="res://Assets/img/JoinSubTittleLogo.png" id="3_3yl0q"]
+[ext_resource type="Texture2D" uid="uid://cy1hjxaaempyn" path="res://Assets/img/btnVerde.png" id="4_4g5wx"]
+[ext_resource type="Texture2D" uid="uid://r03rus5a0ptm" path="res://Assets/img/btnVerdeOscuro.png" id="5_xye1g"]
 
 [sub_resource type="Animation" id="Animation_ya62d"]
 length = 0.001

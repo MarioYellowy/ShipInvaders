@@ -1,7 +1,7 @@
 extends Node
 
 @onready var anim_player = $CanvasLayer/TextureRectTittle/AnimationPlayer
-@onready var line_edit   = $CanvasLayer/LineEdit
+@onready var line_edit: LineEdit   = $CanvasLayer/LineEdit
 @onready var button_join = $CanvasLayer/ButtonJoin
 
 var input_activated := false
@@ -13,7 +13,7 @@ func _ready() -> void:
 
 	# Activa el LineEdit para que el usuario pueda escribir de inmediato
 	line_edit.grab_focus()
-
+	line_edit.placeholder_text = MultiplayerManager.SERVER_IP
 	# Conectar señal de LineEdit usando Callable
 	line_edit.connect("text_submitted", Callable(self, "_on_LineEdit_text_submitted"))
 
@@ -29,5 +29,6 @@ func _on_LineEdit_text_submitted(_new_text: String) -> void:
 	_on_ButtonJoin_pressed()
 
 func _on_ButtonJoin_pressed() -> void:
+	MultiplayerManager.start()
 	# Lógica para cargar tu mapa
 	get_tree().change_scene_to_file("res://Scenes/Maps/mapa.tscn")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cu7ykm4ptoak8"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/Canon/Single_canon.gd" id="1_6dmil"]
-[ext_resource type="Texture2D" uid="uid://gmnubgbsxgpk" path="res://Assets/Sprites/Weapons/SingleCanon.png" id="2_ugf71"]
+[ext_resource type="Texture2D" uid="uid://cnmrhltj0ph47" path="res://Assets/Sprites/Weapons/SingleCanon.png" id="2_ugf71"]
 
 [sub_resource type="Animation" id="Animation_famc2"]
 length = 0.001

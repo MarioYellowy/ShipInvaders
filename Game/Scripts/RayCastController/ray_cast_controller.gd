@@ -44,7 +44,6 @@ func _physics_process(delta: float) -> void:
 	if old_rotation > 360:
 		old_rotation = 0
 		master.rotation = deg_to_rad(0)
-		print("hidding")
 		hide_targets()
 		targets = new_target.duplicate()
 		new_target = []

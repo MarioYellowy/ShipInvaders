@@ -1,13 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bp5uttcx3dkje"]
+[gd_scene load_steps=10 format=3 uid="uid://bp5uttcx3dkje"]
 
-<<<<<<< HEAD
-[ext_resource type="Texture2D" uid="uid://lly5yemqint5" path="res://Sprites/space_breaker_asset/space_breaker_asset/Background/stars_texture.png" id="2_b583g"]
-=======
-[ext_resource type="Texture2D" uid="uid://ce75evv8622qq" path="res://Sprites/space_breaker_asset/space_breaker_asset/Background/stars_texture.png" id="2_b583g"]
->>>>>>> a0916b01da3f9b1569b63a27fff00479bdad0353
-[ext_resource type="PackedScene" uid="uid://6mpefy35k5xe" path="res://Scenes/Maps/Asteroids/asteroide_g.tscn" id="3_5o7mp"]
-[ext_resource type="PackedScene" uid="uid://dgg3iobpirtd0" path="res://Scenes/Maps/Asteroids/asteroide_m.tscn" id="3_f6tl4"]
-[ext_resource type="PackedScene" uid="uid://c2y85m56nme7v" path="res://Scenes/Maps/Asteroids/asteroide_p.tscn" id="4_1d6jm"]
+[ext_resource type="Texture2D" uid="uid://ce7d0xtl2muc7" path="res://Sprites/space_breaker_asset/space_breaker_asset/Background/stars_texture.png" id="2_b583g"]
+[ext_resource type="PackedScene" path="res://Scenes/Maps/Asteroids/asteroide_g.tscn" id="3_5o7mp"]
+[ext_resource type="PackedScene" path="res://Scenes/Maps/Asteroids/asteroide_m.tscn" id="3_f6tl4"]
+[ext_resource type="PackedScene" path="res://Scenes/Maps/Asteroids/asteroide_p.tscn" id="4_1d6jm"]
 [ext_resource type="Script" path="res://Scenes/Maps/spawn_controller.gd" id="5_wcmgv"]
 [ext_resource type="PackedScene" uid="uid://bo30871pjoie3" path="res://Scenes/ship.tscn" id="6_aimk0"]
 
@@ -15,6 +11,20 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6a2po"]
 radius = 696.348
+
+[sub_resource type="GDScript" id="GDScript_0vbri"]
+script/source = "extends MultiplayerSpawner
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
 
 [node name="Mapa" type="Node2D"]
 z_index = 1
@@ -256,3 +266,11 @@ position = Vector2(3417, 3476)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaB"]
 shape = SubResource("CircleShape2D_6a2po")
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://Scenes/ship.tscn")
+spawn_path = NodePath("../Players")
+spawn_limit = 10
+script = SubResource("GDScript_0vbri")
+
+[node name="Players" type="Node2D" parent="."]
