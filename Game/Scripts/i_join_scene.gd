@@ -28,4 +28,5 @@ func _on_ip_line_text_submitted(_new_text: String) -> void:
 	_on_ButtonJoin_pressed()
 
 func _on_ButtonJoin_pressed() -> void:
+	MultiplayerManager.start()
 	get_tree().change_scene_to_file("res://Scenes/Maps/mapa.tscn")
