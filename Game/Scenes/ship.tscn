@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Characters/Ships/ship_01.gd" id="1_qcp34"]
 [ext_resource type="Texture2D" uid="uid://c2ly275k2xod2" path="res://Assets/Sprites/Ships/body_01.png" id="2_ujill"]
 [ext_resource type="PackedScene" uid="uid://8mgainrx8wdt" path="res://Scenes/Weapons/weapon_controller.tscn" id="3_vs20u"]
-[ext_resource type="PackedScene" uid="uid://dsj5anf7vpvg4" path="res://Scenes/Weapons/weapon_ship_01.tscn" id="4_yx6e5"]
+[ext_resource type="PackedScene" uid="uid://dsj5anf7vpvg4" path="res://Scenes/Weapons/double_canon.tscn" id="4_yx6e5"]
 [ext_resource type="PackedScene" uid="uid://cu7ykm4ptoak8" path="res://Scenes/Weapons/single_canon.tscn" id="5_l5tn5"]
 [ext_resource type="Script" path="res://Scripts/RayCastController/ray_cast_controller.gd" id="6_xog7x"]
 
