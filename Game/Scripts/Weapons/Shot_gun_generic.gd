@@ -22,7 +22,13 @@ func start() -> void:
 	if available_bullets < max_bullets:
 		timer.start(cooldown_reload)
 		
-func on_process(delta) -> void:
+func on_process(_delta) -> void:
+	#region look at mouse
+	var global_position_mouse: Vector2 = get_global_mouse_position()
+	var direccion: Vector2 = global_position_mouse - global_position
+	var angle = atan2(direccion.y,direccion.x)
+	global_rotation = angle 
+	#endregion
 	if Input.is_action_pressed("shot"):
 		shot()
 
