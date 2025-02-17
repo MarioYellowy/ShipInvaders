@@ -10,7 +10,7 @@ var input_activated := false
 func _ready() -> void:
 	
 	anim_player.play("tittleAnimation")
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 	ip_line.placeholder_text = MultiplayerManager.SERVER_IP
 	port_line.placeholder_text = str(MultiplayerManager.SERVER_PORT)

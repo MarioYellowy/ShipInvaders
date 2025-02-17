@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cu7ykm4ptoak8"]
+[gd_scene load_steps=8 format=3 uid="uid://cu7ykm4ptoak8"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/Canon/Single_canon.gd" id="1_6dmil"]
+[ext_resource type="PackedScene" uid="uid://cutsuw7rxxfhr" path="res://Scenes/Weapons/bullet.tscn" id="2_mkq0c"]
 [ext_resource type="Texture2D" uid="uid://cnmrhltj0ph47" path="res://Assets/Sprites/Weapons/SingleCanon.png" id="2_ugf71"]
 
 [sub_resource type="Animation" id="Animation_famc2"]
@@ -48,8 +49,9 @@ collision_layer = 4
 collision_mask = 8
 script = ExtResource("1_6dmil")
 max_bullets = 1
-cooldown_reload = 2.5
-damage = 400
+cooldown_reload = 10.0
+bullet = ExtResource("2_mkq0c")
+damage = 200
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708

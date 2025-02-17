@@ -1,13 +1,12 @@
 [gd_scene load_steps=10 format=3 uid="uid://bp5uttcx3dkje"]
 
+[ext_resource type="Script" path="res://Scripts/mapa.gd" id="1_04egh"]
 [ext_resource type="Texture2D" uid="uid://ce7d0xtl2muc7" path="res://Sprites/space_breaker_asset/space_breaker_asset/Background/stars_texture.png" id="2_b583g"]
-[ext_resource type="PackedScene" path="res://Scenes/Maps/Asteroids/asteroide_g.tscn" id="3_5o7mp"]
-[ext_resource type="PackedScene" path="res://Scenes/Maps/Asteroids/asteroide_m.tscn" id="3_f6tl4"]
-[ext_resource type="PackedScene" path="res://Scenes/Maps/Asteroids/asteroide_p.tscn" id="4_1d6jm"]
+[ext_resource type="PackedScene" uid="uid://bgyk51xgwoha8" path="res://Scenes/Maps/Asteroids/asteroide_g.tscn" id="3_5o7mp"]
+[ext_resource type="PackedScene" uid="uid://ber8hstvbsot7" path="res://Scenes/Maps/Asteroids/asteroide_m.tscn" id="3_f6tl4"]
+[ext_resource type="PackedScene" uid="uid://be8dcq6y5cq5i" path="res://Scenes/Maps/Asteroids/asteroide_p.tscn" id="4_1d6jm"]
 [ext_resource type="Script" path="res://Scenes/Maps/spawn_controller.gd" id="5_wcmgv"]
 [ext_resource type="PackedScene" uid="uid://bo30871pjoie3" path="res://Scenes/ship.tscn" id="6_aimk0"]
-
-[sub_resource type="GDScript" id="GDScript_mlwtt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6a2po"]
 radius = 696.348
@@ -18,7 +17,8 @@ script/source = "extends MultiplayerSpawner
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	MultiplayerManager.spawn = self
+	self.spawn_function = MultiplayerManager.spawn_controller.spawn_player
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -29,7 +29,7 @@ func _process(delta: float) -> void:
 [node name="Mapa" type="Node2D"]
 z_index = 1
 z_as_relative = false
-script = SubResource("GDScript_mlwtt")
+script = ExtResource("1_04egh")
 
 [node name="background" type="Node2D" parent="."]
 scale = Vector2(2.3, 2.3)
@@ -268,9 +268,6 @@ position = Vector2(3417, 3476)
 shape = SubResource("CircleShape2D_6a2po")
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://Scenes/ship.tscn")
-spawn_path = NodePath("../Players")
+spawn_path = NodePath("../SpawnController")
 spawn_limit = 10
 script = SubResource("GDScript_0vbri")
-
-[node name="Players" type="Node2D" parent="."]

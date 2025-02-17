@@ -9,7 +9,6 @@ var buttons = []
 
 func _ready():
 	anim_player.play("tittleAnimation")
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	buttons = $CanvasLayer/VBoxContainer.get_children()
 	update_cannon_position()
 

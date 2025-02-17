@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bo30871pjoie3"]
+[gd_scene load_steps=11 format=3 uid="uid://bo30871pjoie3"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Ships/ship_01.gd" id="1_qcp34"]
 [ext_resource type="Texture2D" uid="uid://c2ly275k2xod2" path="res://Assets/Sprites/Ships/body_01.png" id="2_ujill"]
 [ext_resource type="PackedScene" uid="uid://8mgainrx8wdt" path="res://Scenes/Weapons/weapon_controller.tscn" id="3_vs20u"]
-[ext_resource type="PackedScene" uid="uid://dsj5anf7vpvg4" path="res://Scenes/Weapons/weapon_ship_01.tscn" id="4_yx6e5"]
+[ext_resource type="PackedScene" uid="uid://dsj5anf7vpvg4" path="res://Scenes/Weapons/double_canon.tscn" id="4_yx6e5"]
 [ext_resource type="PackedScene" uid="uid://cu7ykm4ptoak8" path="res://Scenes/Weapons/single_canon.tscn" id="5_l5tn5"]
+[ext_resource type="PackedScene" uid="uid://cd5dbr5dj8c3d" path="res://Scenes/Weapons/lazer_canon.tscn" id="6_jjqxe"]
 [ext_resource type="Script" path="res://Scripts/RayCastController/ray_cast_controller.gd" id="6_xog7x"]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qui63"]
@@ -20,12 +21,17 @@ properties/2/path = NodePath(".:rotation")
 properties/2/spawn = true
 properties/2/replication_mode = 1
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_5y4o5"]
+
 [node name="Ship_01" type="CharacterBody2D" node_paths=PackedStringArray("camera") groups=["Player"]]
 disable_mode = 1
 collision_layer = 2
+collision_mask = 15
+platform_on_leave = 2
 platform_floor_layers = 4294967041
 platform_wall_layers = 1
 script = ExtResource("1_qcp34")
+speed_levels = [-500, 0, 500, 1200, 4000]
 health = 1500
 camera = NodePath("Camera2D")
 metadata/_edit_horizontal_guides_ = [-48.0, -25.0, 16.0]
@@ -39,7 +45,7 @@ libraries = {
 "": SubResource("AnimationLibrary_qui63")
 }
 
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." groups=["Player"]]
 replication_config = SubResource("SceneReplicationConfig_0gm5t")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
@@ -59,6 +65,9 @@ position = Vector2(-16, 16)
 [node name="SingleCanon2" parent="Weapons" instance=ExtResource("5_l5tn5")]
 position = Vector2(16, 16)
 
+[node name="LazerCanon" parent="Weapons" instance=ExtResource("6_jjqxe")]
+position = Vector2(15, -16)
+
 [node name="RayCast" type="Node2D" parent="."]
 script = ExtResource("6_xog7x")
 
@@ -69,3 +78,6 @@ collide_with_areas = true
 [node name="Camera2D" type="Camera2D" parent="."]
 enabled = false
 zoom = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5y4o5")

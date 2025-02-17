@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dsj5anf7vpvg4"]
+[gd_scene load_steps=8 format=3 uid="uid://dsj5anf7vpvg4"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/Canon/Double_canon.gd" id="1_uamep"]
+[ext_resource type="PackedScene" uid="uid://cutsuw7rxxfhr" path="res://Scenes/Weapons/bullet.tscn" id="2_mm6wn"]
 [ext_resource type="Texture2D" uid="uid://cvetyqpanch6q" path="res://Assets/Sprites/Weapons/turret_01_mk3_anim.png" id="2_qkt0h"]
 
 [sub_resource type="Animation" id="Animation_nvquv"]
@@ -58,8 +59,10 @@ collision_layer = 4
 collision_mask = 8
 script = ExtResource("1_uamep")
 max_bullets = 2
-cooldown_reload = 2.5
-damage = 200
+cooldown_reload = 10.0
+bullet = ExtResource("2_mm6wn")
+shot_cooldown = 0.1
+damage = 100
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708

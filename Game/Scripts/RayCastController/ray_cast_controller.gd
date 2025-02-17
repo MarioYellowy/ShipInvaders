@@ -5,7 +5,7 @@ class_name RayCastController extends Node
 var raycasts:Array[RayCast2D] = []
 var targets:Array[Node2D] = []
 var new_target: Array[Node2D] = []
-@export var angle_rotation: float = 180
+@export var angle_rotation: float = 360
 var old_rotation: float = 0
 @onready var master: RayCast2D = $Master
 #TODO:
@@ -19,6 +19,7 @@ si detras del muro hay un jugador:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if !controlled_node.is_multiplayer_authority(): return
 	max_distance = get_viewport().size.x if get_viewport().size.y < get_viewport().size.x else get_viewport().size.y
 	master.target_position = Vector2(0, max_distance)
 	master.add_exception(controlled_node)
@@ -37,6 +38,7 @@ func _raycast_start(raycast: RayCast2D) -> void:
 	
 #region events
 func _physics_process(delta: float) -> void:
+	if !controlled_node.is_multiplayer_authority(): return
 	master.rotate(deg_to_rad(angle_rotation) * delta)
 	if master.is_colliding():
 		on_raycast_collision(master)

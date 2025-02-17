@@ -1,8 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://c2y85m56nme7v"]
+[gd_scene load_steps=2 format=3 uid="uid://be8dcq6y5cq5i"]
 
 [ext_resource type="Texture2D" uid="uid://bqk3yakavyr7w" path="res://Assets/Tiles/tile_49.png" id="1_6p440"]
 
-[node name="Asteroid_p" type="StaticBody2D"]
+[node name="Asteroid_p" type="Area2D"]
+collision_mask = 14
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.548963, 0.548963, 0.548963, 1)
