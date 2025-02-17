@@ -11,7 +11,6 @@ var buttons = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	anim_player.play("tittleAnimation")
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	buttons = $CanvasLayer/VBoxContainer.get_children()
 	update_cannon_position()
 	if OS.has_feature("dedicated_server"):

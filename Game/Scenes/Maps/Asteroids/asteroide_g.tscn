@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://6mpefy35k5xe"]
+[gd_scene load_steps=2 format=3 uid="uid://bgyk51xgwoha8"]
 
 [ext_resource type="Texture2D" uid="uid://bvip7ndyt16qm" path="res://Assets/Tiles/tile_50.png" id="1_wf60m"]
 
-[node name="Asteroid_G" type="StaticBody2D"]
+[node name="Asteroid_G" type="Area2D" groups=["asteroide"]]
 collision_mask = 14
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

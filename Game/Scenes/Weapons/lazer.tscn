@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://chkiqx0r6t17q"]
+
+[ext_resource type="Script" path="res://Scripts/Weapons/Bullet/lazer.gd" id="1_xm6f1"]
+[ext_resource type="Texture2D" uid="uid://bxcwpaxnj518k" path="res://Assets/Sprites/Weapons/lazer.png" id="2_mx7o5"]
+
+[sub_resource type="Animation" id="Animation_r3iu5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8v2nb"]
+resource_name = "running"
+length = 0.25
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.233333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f8g6f"]
+_data = {
+"RESET": SubResource("Animation_r3iu5"),
+"running": SubResource("Animation_8v2nb")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4glbg"]
+size = Vector2(4, 32)
+
+[node name="Lazer" type="Area2D"]
+collision_layer = 8
+collision_mask = 7
+script = ExtResource("1_xm6f1")
+speed = 900
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_f8g6f")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_mx7o5")
+hframes = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4glbg")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -5,6 +5,7 @@ var weapons:Array[WeaponBase] = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if !controlled_node.is_multiplayer_authority(): return
 	call_deferred("_set_childrens")
 
 func _set_childrens() -> void:

@@ -1,7 +1,7 @@
 class_name ShotGunGeneric extends WeaponBase
 
 @onready var timer: Timer = $Timer
-var bullet: PackedScene = preload("res://Scenes/Weapons/bullet.tscn")
+
 
 @export_category("Atributes")
 @export_group("Bullets") #TODO maybe hacer otra clase para solo armas con balas y timer
@@ -9,6 +9,7 @@ var bullet: PackedScene = preload("res://Scenes/Weapons/bullet.tscn")
 @export var cooldown_reload: float = 0 # 0 -> No reload
 @export var amount_bullets_on_reload:int = 1
 @export var available_bullets: int
+@export var bullet: PackedScene
 
 @export_group("Shot")
 @export var shot_cooldown: float = 0.25
@@ -44,7 +45,7 @@ func shot() -> void:
 	if can_shot and available_bullets > 0:
 		can_shot = false
 		anims.play("shot")
-		var new_bullet: Bullet = bullet.instantiate()
+		var new_bullet: BulletBase = bullet.instantiate()
 		get_tree().current_scene.add_child(new_bullet)
 		new_bullet.global_position = global_position
 		new_bullet.start(get_global_mouse_position(), controlled_node, damage)
