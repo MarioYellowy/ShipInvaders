@@ -62,7 +62,6 @@ func on_raycast_collision(raycast:RayCast2D) -> void:
 		if collider.is_in_group("Player"):
 			if not collider in new_target:
 				new_target.append(collider)
-			print(collider.name)
 			collider.visible = true
 			
 func hide_targets():

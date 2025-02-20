@@ -28,4 +28,8 @@ func _on_ip_line_text_submitted(_new_text: String) -> void:
 	_on_ButtonJoin_pressed()
 
 func _on_ButtonJoin_pressed() -> void:
+	if ip_line.text != "":
+		MultiplayerManager.SERVER_IP = ip_line.text
+	if int(port_line.text) > 0:
+		MultiplayerManager.SERVER_PORT = int(port_line.text)
 	get_tree().change_scene_to_file("res://Scenes/Maps/mapa.tscn")

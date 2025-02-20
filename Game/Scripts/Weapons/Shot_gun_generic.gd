@@ -18,7 +18,6 @@ var can_shot:bool = true
 # Called when the node enters the scene tree for the first time.
 #region events
 func start() -> void:
-	print(1)
 	timer.timeout.connect(reload_bullets)
 	if available_bullets < max_bullets:
 		timer.start(cooldown_reload)

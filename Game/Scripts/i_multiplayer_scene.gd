@@ -13,9 +13,7 @@ func _ready() -> void:
 	anim_player.play("tittleAnimation")
 	buttons = $CanvasLayer/VBoxContainer.get_children()
 	update_cannon_position()
-	if OS.has_feature("dedicated_server"):
-		print("Starting dedicated server...")
-		MultiplayerManager.become_host()
+	
 		
 
 

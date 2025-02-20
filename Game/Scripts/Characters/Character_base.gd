@@ -25,8 +25,6 @@ func _enter_tree() -> void:
 	else:
 		visible = false
 
-func _physics_process(delta: float) -> void:
-	pass
 
 func update():
 	if !is_multiplayer_authority() and not is_bot: return false

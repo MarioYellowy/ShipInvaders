@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bqk3yakavyr7w" path="res://Assets/Tiles/tile_49.png" id="1_6p440"]
 
 [node name="Asteroid_p" type="Area2D"]
-collision_mask = 14
+collision_mask = 15
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.548963, 0.548963, 0.548963, 1)

@@ -24,12 +24,9 @@ properties/2/replication_mode = 1
 [sub_resource type="CircleShape2D" id="CircleShape2D_5y4o5"]
 
 [node name="Ship_01" type="CharacterBody2D" node_paths=PackedStringArray("camera") groups=["Player"]]
-disable_mode = 1
 collision_layer = 2
 collision_mask = 15
-platform_on_leave = 2
-platform_floor_layers = 4294967041
-platform_wall_layers = 1
+platform_floor_layers = 4294967040
 script = ExtResource("1_qcp34")
 speed_levels = [-500, 0, 500, 1200, 4000]
 health = 1500

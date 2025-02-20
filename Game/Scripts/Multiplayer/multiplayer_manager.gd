@@ -1,11 +1,13 @@
 extends Node
 
-const SERVER_PORT = 6666
-const SERVER_IP = "localhost"
+var SERVER_PORT = 6666
+var SERVER_IP = "localhost"
 var is_host: bool = false
 var spawn_controller: SpawnController
 var spawn: MultiplayerSpawner
+
 func start() -> void:
+	prints("IP:", SERVER_IP, SERVER_PORT)
 	if is_host:
 		become_host()
 	else:
@@ -15,6 +17,7 @@ func join() -> void:
 	var peer = ENetMultiplayerPeer.new()
 	peer.create_client(SERVER_IP, SERVER_PORT)
 	multiplayer.multiplayer_peer = peer
+	
 var _players_spawn_node: Node
 
 

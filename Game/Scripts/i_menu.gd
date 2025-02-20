@@ -8,11 +8,18 @@ var buttons = []
 @onready var anim_player = $CanvasLayer/TextureRectLogo/AnimationPlayer
 
 func _ready():
+	
+	if OS.has_feature("dedicated_server"):
+		MultiplayerManager.is_host = true
+		get_tree().change_scene_to_file("res://Scenes/Maps/mapa.tscn")
+		print("Starting dedicated server...")
+		return
 	anim_player.play("tittleAnimation")
 	buttons = $CanvasLayer/VBoxContainer.get_children()
 	update_cannon_position()
 
 func _process(_delta):
+	if OS.has_feature("dedicated_server"): return
 	if Input.is_action_just_pressed("ui_up"):
 		move_up()
 	elif Input.is_action_just_pressed("ui_down"):
