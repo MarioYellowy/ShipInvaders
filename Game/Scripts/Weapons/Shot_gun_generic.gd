@@ -23,7 +23,7 @@ func start() -> void:
 		timer.start(cooldown_reload)
 		
 func on_process(_delta) -> void:
-	#region look at mouse
+	#region look at mouse #TODO Girar gradualmente, no al instante
 	var global_position_mouse: Vector2 = get_global_mouse_position()
 	var direccion: Vector2 = global_position_mouse - global_position
 	var angle = atan2(direccion.y,direccion.x)
@@ -36,7 +36,6 @@ func on_process(_delta) -> void:
 #region Useful methods
 func reload_bullets() -> void:
 	available_bullets = min(available_bullets+amount_bullets_on_reload, max_bullets)
-	prints(self.name,"Reload, available bullets", available_bullets)
 	if available_bullets < max_bullets:
 		timer.start(cooldown_reload)
 		
@@ -48,12 +47,9 @@ func shot() -> void:
 		get_tree().current_scene.add_child(new_bullet)
 		new_bullet.global_position = global_position
 		new_bullet.start(get_global_mouse_position(), controlled_node, damage)
-		
 		available_bullets -= 1
-		prints("Shot, Avaiable ", available_bullets, "Timer", timer.time_left)
 		if timer.is_stopped():
 			timer.start(cooldown_reload)
 		await get_tree().create_timer(shot_cooldown).timeout
 		can_shot = true
-
 #endregion
