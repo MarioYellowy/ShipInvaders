@@ -1,12 +1,14 @@
 extends Node
 
+@onready var anim_player = $CanvasLayer/label_waiting/AnimationPlayerWaiting
+@onready var username = $CanvasLayer/label_username/LineEdit
+@onready var
 var cursor = load("res://Assets/img/cursor.png")
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	anim_player.play("waiting_animation")
 	Input.set_custom_mouse_cursor(cursor)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass

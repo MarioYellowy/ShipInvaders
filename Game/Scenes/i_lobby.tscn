@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cpx5wug6covxu"]
+[gd_scene load_steps=20 format=3 uid="uid://cpx5wug6covxu"]
 
 [ext_resource type="Script" path="res://Scripts/i_lobby_scene.gd" id="1_llyr1"]
 [ext_resource type="Texture2D" uid="uid://dqorfuw6jhsu6" path="res://Assets/img/space_background_lobby.png" id="2_ucet5"]
@@ -9,6 +9,22 @@
 [ext_resource type="Texture2D" uid="uid://byeiv4li34ytv" path="res://Assets/Sprites/Ships/ship_Blue_01.png" id="7_2wjcv"]
 [ext_resource type="Texture2D" uid="uid://cuwrwqg00525s" path="res://Assets/Sprites/Ships/body_01.png" id="8_soyw5"]
 [ext_resource type="Texture2D" uid="uid://b5aty8giv1lkq" path="res://Assets/img/btnAzulOscuro.png" id="9_osv1k"]
+[ext_resource type="Texture2D" uid="uid://b276c8qp8n4tr" path="res://Assets/img/btnAzulClaroShort.png" id="10_nnj8n"]
+
+[sub_resource type="Animation" id="Animation_3kq8u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(30, 30)]
+}
 
 [sub_resource type="Animation" id="Animation_mxmy5"]
 resource_name = "waiting_animation"
@@ -27,26 +43,17 @@ tracks/0/keys = {
 "values": [Vector2(30, 30), Vector2(30, 60), Vector2(30, 30)]
 }
 
-[sub_resource type="Animation" id="Animation_3kq8u"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(30, 30)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_552qt"]
 _data = {
 "RESET": SubResource("Animation_3kq8u"),
 "waiting_animation": SubResource("Animation_mxmy5")
 }
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2oaly"]
+texture = ExtResource("6_xepms")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8ae52"]
+texture = ExtResource("6_xepms")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7rogd"]
 
@@ -56,11 +63,8 @@ texture = ExtResource("9_osv1k")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8f5nl"]
 texture = ExtResource("9_osv1k")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2oaly"]
-texture = ExtResource("6_xepms")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8ae52"]
-texture = ExtResource("6_xepms")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yajmn"]
+texture = ExtResource("10_nnj8n")
 
 [node name="ILobby" type="Node2D"]
 script = ExtResource("1_llyr1")
@@ -77,11 +81,11 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("2_ucet5")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="ship_button" type="Sprite2D" parent="."]
 position = Vector2(299, 392)
 texture = ExtResource("3_770f6")
 
-[node name="ShipBackgroundTop" type="Sprite2D" parent="."]
+[node name="ship_top" type="Sprite2D" parent="."]
 position = Vector2(939, 153)
 texture = ExtResource("4_3e1rv")
 
@@ -116,14 +120,28 @@ text = "Write your username:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer/label_username"]
+offset_left = -66.0
+offset_top = 55.0
+offset_right = 414.0
+offset_bottom = 145.0
+theme_override_colors/font_placeholder_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_8fbo1")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxTexture_2oaly")
+theme_override_styles/normal = SubResource("StyleBoxTexture_8ae52")
+placeholder_text = "username"
+alignment = 1
+
+[node name="PanelContainerTeam" type="PanelContainer" parent="CanvasLayer"]
 offset_left = 676.0
 offset_top = 182.0
 offset_right = 976.0
 offset_bottom = 456.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_7rogd")
 
-[node name="label_team" type="Label" parent="CanvasLayer/PanelContainer"]
+[node name="label_team" type="Label" parent="CanvasLayer/PanelContainerTeam"]
 custom_minimum_size = Vector2(230, 35)
 layout_mode = 2
 size_flags_vertical = 0
@@ -132,13 +150,13 @@ theme_override_font_sizes/font_size = 35
 text = "Select your team:"
 horizontal_alignment = 1
 
-[node name="ship_blue" type="Sprite2D" parent="CanvasLayer/PanelContainer"]
+[node name="ship_blue" type="Sprite2D" parent="CanvasLayer/PanelContainerTeam"]
 position = Vector2(59, 108)
 rotation = 0.785398
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_2wjcv")
 
-[node name="label_blueteam" type="Label" parent="CanvasLayer/PanelContainer/ship_blue"]
+[node name="label_blueteam" type="Label" parent="CanvasLayer/PanelContainerTeam/ship_blue"]
 offset_left = 19.7991
 offset_top = 141.421
 offset_right = 191.799
@@ -150,13 +168,13 @@ text = "BlueTeam"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="ship_red" type="Sprite2D" parent="CanvasLayer/PanelContainer"]
+[node name="ship_red" type="Sprite2D" parent="CanvasLayer/PanelContainerTeam"]
 position = Vector2(239, 110)
 rotation = -0.785398
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("8_soyw5")
 
-[node name="label_redteam" type="Label" parent="CanvasLayer/PanelContainer/ship_red"]
+[node name="label_redteam" type="Label" parent="CanvasLayer/PanelContainerTeam/ship_red"]
 offset_left = -140.007
 offset_top = 21.2132
 offset_right = 33.9928
@@ -167,7 +185,7 @@ theme_override_font_sizes/font_size = 50
 text = "Red Team"
 horizontal_alignment = 1
 
-[node name="Button2" type="Button" parent="CanvasLayer"]
+[node name="ButtonDone" type="Button" parent="CanvasLayer"]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -185,16 +203,50 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_4xo3a")
 theme_override_styles/normal = SubResource("StyleBoxTexture_8f5nl")
 text = "Done"
 
-[node name="LineEdit" type="LineEdit" parent="CanvasLayer"]
-offset_left = 98.0
-offset_top = 246.0
-offset_right = 578.0
-offset_bottom = 336.0
-theme_override_colors/font_placeholder_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+[node name="ButtonStartGame" type="Button" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 186.0
+offset_top = -166.0
+offset_right = 557.0
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_fonts/font = ExtResource("5_8fbo1")
 theme_override_font_sizes/font_size = 50
-theme_override_styles/focus = SubResource("StyleBoxTexture_2oaly")
-theme_override_styles/normal = SubResource("StyleBoxTexture_8ae52")
-placeholder_text = "username"
+theme_override_styles/hover = SubResource("StyleBoxTexture_4xo3a")
+theme_override_styles/normal = SubResource("StyleBoxTexture_8f5nl")
+text = "Start game"
+
+[node name="Label_count" type="Label" parent="CanvasLayer"]
+offset_left = 1060.0
+offset_top = 6.0
+offset_right = 1143.0
+offset_bottom = 57.0
+theme_override_fonts/font = ExtResource("5_8fbo1")
+theme_override_font_sizes/font_size = 50
+horizontal_alignment = 1
+
+[node name="Label_admin" type="Label" parent="CanvasLayer"]
+offset_left = 136.0
+offset_top = 465.0
+offset_right = 266.0
+offset_bottom = 496.0
+theme_override_fonts/font = ExtResource("5_8fbo1")
+theme_override_font_sizes/font_size = 30
+text = "Admin code:"
+horizontal_alignment = 1
+
+[node name="LineEditCode" type="LineEdit" parent="CanvasLayer/Label_admin"]
+offset_left = -34.0
+offset_top = 40.0
+offset_right = 159.0
+offset_bottom = 130.0
+theme_override_fonts/font = ExtResource("5_8fbo1")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxTexture_yajmn")
+placeholder_text = "code"
 alignment = 1
