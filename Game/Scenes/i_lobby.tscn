@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpx5wug6covxu"]
+
+[ext_resource type="Script" path="res://Scripts/i_lobby_scene.gd" id="1_llyr1"]
+[ext_resource type="Texture2D" uid="uid://dqorfuw6jhsu6" path="res://Assets/img/space_background_lobby.png" id="2_ucet5"]
+
+[node name="ILobby" type="Node2D"]
+script = ExtResource("1_llyr1")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_ucet5")

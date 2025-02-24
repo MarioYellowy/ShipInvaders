@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://bp5uttcx3dkje"]
 
 [ext_resource type="Script" path="res://Scripts/mapa.gd" id="1_04egh"]
-[ext_resource type="Texture2D" uid="uid://ce7d0xtl2muc7" path="res://Sprites/space_breaker_asset/space_breaker_asset/Background/stars_texture.png" id="2_b583g"]
+[ext_resource type="Texture2D" uid="uid://duvu3duppnjil" path="res://Sprites/space_breaker_asset/space_breaker_asset/Background/stars_texture.png" id="2_b583g"]
 [ext_resource type="PackedScene" uid="uid://bgyk51xgwoha8" path="res://Scenes/Maps/Asteroids/asteroide_g.tscn" id="3_5o7mp"]
 [ext_resource type="PackedScene" uid="uid://ber8hstvbsot7" path="res://Scenes/Maps/Asteroids/asteroide_m.tscn" id="3_f6tl4"]
 [ext_resource type="PackedScene" uid="uid://be8dcq6y5cq5i" path="res://Scenes/Maps/Asteroids/asteroide_p.tscn" id="4_1d6jm"]
